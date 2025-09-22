@@ -35,6 +35,7 @@ export const useProfiles = create(set => ({
 /** ----------------- POSTS STORE ----------------- **/
 export const usePosts = create(set => ({
 	data: [],
+	newData:[],
 	getMyPostsLoading: false,
 	getOtherPostsLoading: false,
 	getFollowingPostsLoading: false,
@@ -51,7 +52,9 @@ export const usePosts = create(set => ({
 		set({ getMyPostsLoading: true })
 		try {
 			const { data } = await axiosRequest.get('/Post/get-my-posts')
-			set({ data: data.data || [] })
+			
+			
+			set({ data: data || [] })
 		} catch (err) {
 			console.error('Ошибка загрузки моих постов:', err)
 		} finally {
@@ -338,6 +341,8 @@ export const useGet_Storyes = create(set => ({
 		set({ getStoryesLoading: true })
 		try {
 			const { data } = await axiosRequest.get('/Story/get-stories')
+			
+			
 			set({ stories: data || [] })
 		} catch (err) {
 			console.error('Ошибка получения сторис:', err)

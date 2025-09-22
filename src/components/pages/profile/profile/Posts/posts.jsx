@@ -29,8 +29,10 @@ export default function PostsPage() {
 			get_other_Posts(id)
 		} else {
 			get_my_Posts()
+			
 		}
 	}, [])
+console.log(data);
 
 	const getLoading = getMyPostsLoading || getOtherPostsLoading
 
