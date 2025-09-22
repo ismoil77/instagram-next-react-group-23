@@ -67,7 +67,7 @@ export default function Login() {
 					{/* Левая часть с изображением */}
 					<div className='flex-1 flex items-center justify-center max-sm:hidden'>
 						<div className='w-full max-w-md flex flex-col items-center'>
-							<Image
+							<img
 								src={mockPhones}
 								alt='phones'
 								className='mx-auto max-h-[420px] object-contain'
@@ -75,8 +75,8 @@ export default function Login() {
 							<div className='mt-4 flex flex-col items-center'>
 								<p className='text-sm text-gray-500 mb-2'>Get the app</p>
 								<div className='flex gap-3'>
-									<Image src={googleIcon} alt='Google Play' />
-									<Image src={microsoftIcon} alt='Microsoft' />
+									<img src={googleIcon} alt='Google Play' />
+									<img src={microsoftIcon} alt='Microsoft' />
 								</div>
 							</div>
 						</div>
@@ -87,7 +87,7 @@ export default function Login() {
 						<div className='w-full max-w-sm'>
 							<div className='p-8 rounded-md bg-white'>
 								<div className='flex flex-col items-center'>
-									<Image src={instagramIcon} alt='Instagram' className='mb-4' />
+									<img src={instagramIcon} alt='Instagram' className='mb-4' />
 
 									<form className='w-full' onSubmit={handleSubmit}>
 										<input
