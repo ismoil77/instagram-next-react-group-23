@@ -21,7 +21,7 @@ const PostCardHomePage = ({ post, giveId, onOpen }) => {
 		toggleLike,
 		toggleFavorite,
 		addComment,
-		stories
+		stories,
 	} = usePostStore()
 
 	const [isClient, setIsClient] = useState(false)
@@ -60,9 +60,11 @@ const PostCardHomePage = ({ post, giveId, onOpen }) => {
 					: post.content
 			)
 		}
-		if (typeof window !== 'undefined') {
+
+		// ✅ Проверяем, что код на клиенте
+		if (typeof window !== 'undefined' && post?.postId) {
 			try {
-				if (post?.postId) localStorage.setItem('postId', post.postId)
+				localStorage.setItem('postId', post.postId)
 			} catch (e) {}
 		}
 	}, [post])
@@ -185,7 +187,11 @@ const PostCardHomePage = ({ post, giveId, onOpen }) => {
 				{stories.some(el => el.userId === post.userId) ? (
 					<div className='w-11.5 h-11.5 bg-gradient-to-tr from-yellow-400 via-pink-500 to-purple-600 rounded-full flex justify-center items-center'>
 						<img
-							src={post?.userImage==''||post?.userImage==null?"https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png  ":`${API_IMAGE}/${post?.userImage}`}
+							src={
+								post?.userImage == '' || post?.userImage == null
+									? 'https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png  '
+									: `${API_IMAGE}/${post?.userImage}`
+							}
 							alt={post.userName}
 							width={40}
 							height={40}
@@ -199,7 +205,11 @@ const PostCardHomePage = ({ post, giveId, onOpen }) => {
 				) : (
 					<div className='w-11.5 h-11.5 rounded-full flex justify-center items-center '>
 						<img
-							src={post.userImage==''||post.userImage==null?"https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png  ":`${API_IMAGE}/${post.userImage}`}
+							src={
+								post.userImage == '' || post.userImage == null
+									? 'https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png  '
+									: `${API_IMAGE}/${post.userImage}`
+							}
 							alt={post.userName}
 							width={40}
 							height={40}
@@ -462,7 +472,11 @@ const PostCardHomePage = ({ post, giveId, onOpen }) => {
 									className='flex items-start mb-1'
 								>
 									<img
-										src={comment.userImage==''||comment.userImage==null?"https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png  ":`${API_IMAGE}/${comment.userImage}`}
+										src={
+											comment.userImage == '' || comment.userImage == null
+												? 'https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png  '
+												: `${API_IMAGE}/${comment.userImage}`
+										}
 										alt={comment.userName}
 										width={20}
 										height={20}
@@ -494,7 +508,11 @@ const PostCardHomePage = ({ post, giveId, onOpen }) => {
 					{post.comments.slice(0, 1).map(comment => (
 						<div key={comment.postCommentId} className='flex items-start mb-1'>
 							<img
-								src={comment.userImage==''||comment.userImage==null?"https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png  ":`${API_IMAGE}/${comment.userImage}`}
+								src={
+									comment.userImage == '' || comment.userImage == null
+										? 'https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png  '
+										: `${API_IMAGE}/${comment.userImage}`
+								}
 								alt={comment.userName}
 								width={20}
 								height={20}
