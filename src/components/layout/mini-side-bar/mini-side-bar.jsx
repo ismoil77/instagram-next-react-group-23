@@ -1,12 +1,12 @@
-"use client"
-import { useEffect, useState } from 'react'
-import Link from 'next/link'
-import { Menu, MenuItem, Tooltip, tooltipClasses } from '@mui/material'
+'use client'
 import Profile from '@/assets/icon/layout/instagramDefaultProfile.jpg'
-import { useTranslation } from 'react-i18next'
 import styled from '@emotion/styled'
+import { Tooltip, tooltipClasses } from '@mui/material'
 import Image from 'next/image'
+import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
+import { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 import {
 	add,
@@ -15,20 +15,13 @@ import {
 	homeIcon,
 	homeIconActive,
 	instagramMiniLogo,
-	like,
-	likeActive,
 	message,
 	messageActive,
-	searchIcon,
-	searchIconActive,
-	setting,
-	settings,
-	threads,
 	video,
 	videoActive,
 } from '@/assets/icon/layout/svg'
-import axios from 'axios'
 import NotificationMini from '@/components/notification/Notification-mini'
+import axios from 'axios'
 
 const LightTooltip = styled(({ className, ...props }) => (
 	<Tooltip {...props} classes={{ popper: className }} />
@@ -61,10 +54,10 @@ const MiniSideBar = ({ children }) => {
 		if (!isClient) return
 		try {
 			const { data } = await axios.get(
-				"http://37.27.29.18:8003/UserProfile/get-my-profile",
+				'https://instagram-api.softclub.tj/UserProfile/get-my-profile',
 				{
 					headers: {
-						Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+						Authorization: `Bearer ${localStorage.getItem('access_token')}`,
 					},
 				}
 			)
@@ -84,7 +77,9 @@ const MiniSideBar = ({ children }) => {
 		<div className='flex dark:bg-gray-900'>
 			<section className='flex justify-center w-[50px] border-r-[2px] border-[#eee] dark:border-gray-700 h-[100vh] dark:bg-gray-900'>
 				<div className='sideBar h-full pb-[100px]'>
-					<div className='m-auto flex justify-center pb-[10px] mt-[20px]'>{instagramMiniLogo}</div>
+					<div className='m-auto flex justify-center pb-[10px] mt-[20px]'>
+						{instagramMiniLogo}
+					</div>
 					<div className='flex flex-col justify-between h-full'>
 						<div className='flex flex-col gap-[0.5rem] mt-4'>
 							<LightTooltip title={t('layout.home')} placement='right' arrow>
@@ -137,7 +132,10 @@ const MiniSideBar = ({ children }) => {
 														? 'border-[2px] border-solid border-[black] dark:border-white rounded-[50%]'
 														: ''
 												} text-[16px] rounded-full object-cover block`}
-												src={"http://37.27.29.18:8003/images/" + data?.image}
+												src={
+													'https://instagram-api.softclub.tj/images/' +
+													data?.image
+												}
 												width={25}
 												height={25}
 												alt='Profile'
@@ -167,7 +165,9 @@ const MiniSideBar = ({ children }) => {
 				</div>
 			</section>
 
-			<div className='ml-[0px] w-full dark:bg-gray-900 dark:text-white'>{children}</div>
+			<div className='ml-[0px] w-full dark:bg-gray-900 dark:text-white'>
+				{children}
+			</div>
 		</div>
 	)
 }

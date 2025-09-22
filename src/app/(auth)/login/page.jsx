@@ -1,6 +1,6 @@
 'use client'
 import Image from 'next/image'
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 import googleIcon from '../../../assets/img/pages/auth/registration/google_play.png'
 import instagramIcon from '../../../assets/img/pages/auth/registration/inst_logo_auth.png'
@@ -8,8 +8,8 @@ import microsoftIcon from '../../../assets/img/pages/auth/registration/microsoft
 import mockPhones from '../../../assets/img/pages/auth/registration/phones.png'
 
 import { useLogin } from '@/store/pages/auth/login/loginStore'
-import { useRouter } from 'next/navigation' // ✅ правильно для App Router
 import axios from 'axios'
+import { useRouter } from 'next/navigation' // ✅ правильно для App Router
 
 export default function Login() {
 	const { login, loading, error } = useLogin()
@@ -25,19 +25,21 @@ export default function Login() {
 		setIsClient(true) // флаг, что мы на клиенте
 	}, [])
 
-	const getUsers = async (name) => {
+	const getUsers = async name => {
 		if (!isClient) return false
 		try {
 			const token = localStorage.getItem('access_token')
 			const { data } = await axios.get(
-				`http://37.27.29.18:8003/User/get-users?UserName=${name}&PageSize=1000`,
+				`https://instagram-api.softclub.tj/User/get-users?UserName=${name}&PageSize=1000`,
 				{
 					headers: {
 						Authorization: `Bearer ${token}`,
 					},
 				}
 			)
-			const find = data.data.find((i) => i.userName.toLowerCase() === name.toLowerCase())
+			const find = data.data.find(
+				i => i.userName.toLowerCase() === name.toLowerCase()
+			)
 			if (find) {
 				localStorage.setItem('userID', find.id)
 				return true
@@ -48,7 +50,7 @@ export default function Login() {
 		}
 	}
 
-	const handleSubmit = async (e) => {
+	const handleSubmit = async e => {
 		e.preventDefault()
 		const res = await login(form)
 		if (res.success) {
@@ -92,7 +94,7 @@ export default function Login() {
 											className='w-full px-3 py-2 mb-3 border rounded-md text-sm'
 											placeholder='Phone number, username or email'
 											value={form.username}
-											onChange={(e) =>
+											onChange={e =>
 												setForm({ ...form, username: e.target.value })
 											}
 										/>
@@ -101,7 +103,7 @@ export default function Login() {
 											className='w-full px-3 py-2 mb-4 border rounded-md text-sm'
 											placeholder='Password'
 											value={form.password}
-											onChange={(e) =>
+											onChange={e =>
 												setForm({ ...form, password: e.target.value })
 											}
 										/>

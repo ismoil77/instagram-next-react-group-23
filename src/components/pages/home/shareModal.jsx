@@ -1,7 +1,7 @@
 "use client";
-import { useChatStore } from "@/store/pages/chat/chat";
-import { useChatStore2 } from "@/store/pages/chat/chatbyid";
-import { useEffect, useState } from "react";
+import { useChatStore } from "@/store/pages/chat/chat"
+import { useChatStore2 } from "@/store/pages/chat/chatbyid"
+import { useEffect, useState } from "react"
 
 const ShareModal = ({ postid }) => {
   const [isOpen, setIsOpen] = useState(true);
@@ -100,7 +100,7 @@ const ShareModal = ({ postid }) => {
                     >
                       {otherImage ? (
                         <img
-                          src={`http://37.27.29.18:8003/images/${otherImage}`}
+                          src={`https://instagram-api.softclub.tj/images/${otherImage}`}
                           alt={otherName}
                           className="w-14 h-14 rounded-full object-cover"
                         />

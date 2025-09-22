@@ -1,10 +1,10 @@
 "use client";
 
-import { useData } from "@/store/pages/reels/reels";
-import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
-import ComentModal from "@/components/pages/reels/comentMOdal";
-import Link from "next/link";
+import ComentModal from "@/components/pages/reels/comentMOdal"
+import { useData } from "@/store/pages/reels/reels"
+import Image from "next/image"
+import Link from "next/link"
+import { useEffect, useRef, useState } from "react"
 
 export default function Reals() {
   const {
@@ -169,7 +169,7 @@ export default function Reals() {
                   data-index={index}
                   data-postId={user.postId}
                   onClick={() => togglePlay(index)}
-                  src={`http://37.27.29.18:8003/images/${user.images}`}
+                  src={`https://instagram-api.softclub.tj/images/${user.images}`}
                   className="relative w-full shadow-2xs shadow-black"
                 />
 
@@ -251,7 +251,7 @@ export default function Reals() {
                         height={100}
                         src={
                           user.userImage
-                            ? `http://37.27.29.18:8003/images/${user?.userImage}`
+                            ? `https://instagram-api.softclub.tj/images/${user?.userImage}`
                             : "/image.png"
                         }
                         className="w-[100%] h-[100%] rounded-full"
@@ -446,7 +446,7 @@ export default function Reals() {
                     height={100}
                     src={
                       user.userImage
-                        ? `http://37.27.29.18:8003/images/${user?.userImage}`
+                        ? `https://instagram-api.softclub.tj/images/${user?.userImage}`
                         : "/image.png"
                     }
                     alt={user.userName || "User image"}
