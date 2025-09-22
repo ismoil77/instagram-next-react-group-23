@@ -266,12 +266,11 @@ const PostCardHomePage = ({ post, giveId, onOpen }) => {
 				) : (
 					<img
 						src={`${API_IMAGE}/${currentMedia}`}
-						alt='Post image'
+						alt='Post image'		
 						
 						className='object-cover'
 					/>
 				)}
-
 				{isVideo && (
 					<>
 						<button
