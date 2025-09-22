@@ -249,7 +249,7 @@ export default function SideBar({ children }) {
 						<img
 							src='/logo.png'
 							alt='Logo'
-							className='ml-[17px] my-[15px] cursor-pointer dark:invert'
+							className='ml-[17px] w-[220px] my-[15px] cursor-pointer dark:invert'
 						/>
 					</Link>
 

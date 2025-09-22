@@ -264,10 +264,10 @@ const PostCardHomePage = ({ post, giveId, onOpen }) => {
 						<track kind='captions' srcLang='en' label='English' />
 					</video>
 				) : (
-					<Image
+					<img
 						src={`${API_IMAGE}/${currentMedia}`}
 						alt='Post image'
-						fill
+						
 						className='object-cover'
 					/>
 				)}
