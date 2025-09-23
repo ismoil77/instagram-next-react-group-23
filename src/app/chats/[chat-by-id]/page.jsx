@@ -15,6 +15,7 @@ import {
 	Smile,
 	Trash2,
 } from 'lucide-react'
+import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
 
@@ -144,7 +145,7 @@ export default function ChatById({ params }) {
 					{chatById &&
 					chatById.filter(el => el.userName !== profile?.userName).at(0)
 						?.userImage ? (
-						<img
+						<Image
 							src={`https://instagram-api.softclub.tj/images/${
 								chatById.filter(el => el.userName !== profile?.userName).at(0)
 									?.userImage
@@ -185,7 +186,7 @@ export default function ChatById({ params }) {
 							<div className='bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl p-6 w-80 shadow-2xl flex flex-col items-center animate-fade-in'>
 								<div className='relative'>
 									<div className='absolute inset-0 rounded-full bg-pink-500/30 animate-ping'></div>
-									<img
+									<Image
 										src={
 											chatById
 												?.filter(el => el.userName !== profile?.userName)
@@ -260,7 +261,7 @@ export default function ChatById({ params }) {
 								>
 									{!isMe &&
 										(el.userImage ? (
-											<img
+											<Image
 												src={`https://instagram-api.softclub.tj/images/${el.userImage}`}
 												className='w-7 h-7 rounded-full object-cover'
 											/>

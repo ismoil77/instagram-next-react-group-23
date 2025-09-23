@@ -5,7 +5,7 @@ import mes from "@/app/chats/images/mes.svg";
 const Chat = () => {
   return (
     <div className="md:flex hidden flex-col items-center justify-center w-full h-[80vh] text-center px-4">
-      <img
+      <Image
         src={mes}
         width={120}
         height={120}
